@@ -16,6 +16,8 @@ class StateMachine(object):
         
         for StateCodes,States in self.States.iteritems():
             setattr(StateMachine,States,StateCodes)
+    def __repr__(self):
+        return "StateMachine(" + str(self.StateCodes) + ",InitialState=" + str(self.CurrentCode) + ")"
     def SwitchTo(self,NewState):
         if type(NewState) is int:
             self.CurrentCode = NewState
@@ -27,3 +29,4 @@ class StateMachine(object):
         return self.CurrentCode == other
         
 SM = StateMachine(['A','B'])
+SM2 = StateMachine({'A' : 0,'B' : 1})
