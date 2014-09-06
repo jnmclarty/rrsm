@@ -46,9 +46,14 @@ class StateMachine(object):
         return self.States[self.CurrentCode]
     def __eq__(self,other):
         return self.CurrentCode == other
-        
-SM = StateMachine(['A',1])
-SM = StateMachine(['A','A','B'])
-SM2 = StateMachine({'A' : 0, 2 : 1})
-SM2 = StateMachine({'A' : 0, 'B' : '1'})
-SM2 = StateMachine({'A' : 0, 'B' : 0})
+
+if __name__ == '__main__':
+    
+    SM = StateMachine(['A','B','C'])
+    
+    #Examples of error cases:
+    #SM = StateMachine(['A',1])
+    #SM = StateMachine(['A','A','B'])
+    #SM2 = StateMachine({'A' : 0, 2 : 1})
+    #SM2 = StateMachine({'A' : 0, 'B' : '1'})
+    #SM2 = StateMachine({'A' : 0, 'B' : 0})
