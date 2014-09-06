@@ -1,9 +1,13 @@
 class StateMachine(object):
     def __init__(self,RequiredStates,InitialState=0):
     
-        self.States = RequiredStates
-        self.StateCodes = dict([(v,k) for k,v in RequiredStates.iteritems()]) # This is done for speed of the rest of the class
-        
+        if type(RequiredStates) is dict:
+            self.States = RequiredStates
+            self.StateCodes = dict([(code,state) for state,code in RequiredStates.iteritems()]) # This is done for speed of the rest of the class
+        elif type(RequiredStates) is list:
+            self.States = dict([(code,state) for code,state in enumerate(RequiredStates)])
+            self.StateCodes = dict([(state,code) for code,state in enumerate(RequiredStates)])
+
         self.SwitchTo(InitialState)
         
         for StateCodes,States in self.States.iteritems():
@@ -19,3 +23,4 @@ class StateMachine(object):
     def __eq__(self,other):
         return self.CurrentCode == other
         
+SM = StateMachine(['A','B'])
