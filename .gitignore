@@ -1,0 +1,4 @@
+*.pyc
+README.rst
+setup.py
+rrsm/WIP/*
