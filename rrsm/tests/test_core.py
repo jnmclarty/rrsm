@@ -23,9 +23,9 @@ class StateMachineTests(TestCase):
         if SM[2] != 'C':
             raise Exception("Problem with getting code")
         SM('B')
-        if SM != 2:
+        if SM != 1:
             raise Exception("Problem changing state")            
-        SM(3)
+        SM(2)
         if SM != 'C':
             raise Exception("Problem changing state, using code")   
 
@@ -35,7 +35,7 @@ class StateMachineTests(TestCase):
         SM = StateMachine(dict(zip(['A','B','C'],[10,20,30])))
         if SM != 'A':
             raise Exception("Should have instantiated at 'A'")
-        if SM != 0:
+        if SM != 10:
             raise Exception("Should have instantiated at 10")
         if SM['B'] != 20:
             raise Exception("Problem with getting state")

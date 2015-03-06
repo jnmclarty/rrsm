@@ -135,8 +135,13 @@ class StateMachine(object):
             return self.current_code == other.current_code
         else:
             raise TypeError("Cannot compare {} to StateMachine".format(type(other)))
+    def __ne__(self, other):
+        return not (self == other)
             
 if __name__ == '__main__':
     SM = StateMachine(['A', 'B', 'C'])
-    
+    SM('B')
+    print SM.current_code
+    if SM != 2:
+        raise Exception("Problem changing state")    
     

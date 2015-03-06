@@ -1,1 +1,1 @@
-from rrsm.core import StateMachine
+from rrsm.core import StateMachine, StateTypeError
