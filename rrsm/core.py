@@ -42,7 +42,7 @@ class StateMachine(object):
     True
     """
     
-    def __init__(self, ReqStates):
+    def __init__(self, ReqStates,InitialState=None):
         
         if type(ReqStates) is dict:
             if not all([type(code) is int for code in ReqStates.values()]):
@@ -69,8 +69,11 @@ class StateMachine(object):
                                      "the elements must form a unique set of strings.")        
             self._states = dict((code, state) for code, state in enumerate(ReqStates))
             self._scodes = dict((state, code) for code, state in enumerate(ReqStates))
-
-        self._curcode = min(self._scodes.values())
+        
+        if InitialState is not None:
+            self._curcode = InitialState
+        else:
+            self._curcode = min(self._scodes.values())
         
         for code, state in self._states.items():
             self.__setattr__(state, code)
