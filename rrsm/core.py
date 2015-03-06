@@ -139,10 +139,4 @@ class StateMachine(object):
 if __name__ == '__main__':
     SM = StateMachine(['A', 'B', 'C'])
     
-    #Examples of error cases:
-    #SM = StateMachine(['A', 1])
-    #SM = StateMachine(['A', 'A', 'B'])
-    #SM2 = StateMachine({'A' : 0,  2 : 1})
-    #SM2 = StateMachine({'A' : 0,  'B' : '1'})
-    #SM2 = StateMachine({'A' : 0,  'B' : 0})
     

@@ -47,6 +47,16 @@ class StateMachineTests(TestCase):
         SM(30)
         if SM != 'C':
             raise Exception("Problem changing state, using code")  
+    
+    def test_bad_instatiations(self):
+        pass
+    #TODO
+        #Examples of error cases:
+    #SM = StateMachine(['A', 1])
+    #SM = StateMachine(['A', 'A', 'B'])
+    #SM2 = StateMachine({'A' : 0,  2 : 1})
+    #SM2 = StateMachine({'A' : 0,  'B' : '1'})
+    #SM2 = StateMachine({'A' : 0,  'B' : 0})
             
 if __name__ == '__main__':
     nose.runmodule(argv=[__file__, '-vvs', '-x'],exit=False) #, '--pdb-failure'],
