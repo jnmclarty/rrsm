@@ -21,15 +21,18 @@ class StateMachineException(Exception):
 
 class StateMachine(object):
     """
-    The main class for a state machine.
+    The main class for a finite state machine created at run-time.
+    
+    It's initialized to the state with the lowest assigned value.  In the case
+    of a list, that's 0.
     
     Example:
     
     Create a State Machine from a list of strings:
-    >>> SM = StateMachine(['Initialized', 'Connected', 'Closed'])
+    >>> SM = StateMachine(['Initialized', 'Connected', 'Open'])
     
     Create a State Machine from a dictionary:
-    >>> SM = StateMachine({'Initialized' : 10, 'Connected' : 20, 'Closed' : 30})
+    >>> SM = StateMachine({'Initialized' : 10, 'Connected' : 20, 'Open' : 30})
     
     >>> SM.switch_to('Initialized')
     >>> SM == SM.Initialized
@@ -37,9 +40,11 @@ class StateMachine(object):
     >>> SM.switch_to(20)
     >>> SM == SM.Connected
     True
+    
+    
     """
     
-    def __init__(self, RequiredStates, InitialState=0):    
+    def __init__(self, RequiredStates):    
         if type(RequiredStates) is dict:
 
             if not all([type(code) is int for code in RequiredStates.values()]):
@@ -64,7 +69,7 @@ class StateMachine(object):
             self.states = dict([(code, state) for code, state in enumerate(RequiredStates)])
             self.scodes = dict([(state, code) for code, state in enumerate(RequiredStates)])
 
-        self.switch_to(InitialState)
+        self.curcode = min(self.scodes)
         
         for code, state in self.states.iteritems():
             self.__setattr__(state, code)
@@ -94,8 +99,7 @@ class StateMachine(object):
         return self.curcode == other
 
 if __name__ == '__main__':
-    pass
-    #SM = StateMachine(['A', 'B', 'C'])
+    SM = StateMachine(['A', 'B', 'C'])
     
     #Examples of error cases:
     #SM = StateMachine(['A', 1])
