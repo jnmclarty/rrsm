@@ -1,1 +1,1 @@
-from StateMachine import StateMachine as StateMachine
+from rrsm.core import StateMachine
