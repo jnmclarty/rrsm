@@ -7,8 +7,7 @@ def read(*paths):
     with open(os.path.join(*paths), 'r') as f:
         return f.read()
         
-v = '0.1.0'
-print "Setting up rrsm" 
+v = '0.2.0'
   
 setup(name = "rrsm",
       version = v,
@@ -24,7 +23,7 @@ setup(name = "rrsm",
                      'License :: OSI Approved :: MIT License',
                      'Intended Audience :: Developers',
                      'Operating System :: OS Independent',
-                     'Programming Language :: Python :: 2.6'
+                     'Programming Language :: Python :: 2.6',
                      'Programming Language :: Python :: 2.7',
                      'Programming Language :: Python :: 3.3',
                      'Programming Language :: Python :: 3.4'])
