@@ -48,7 +48,7 @@ class StateMachine(object):
             if not all([type(code) is int for code in list(ReqStates.values())]):
                 raise StateTypeError(ReqStates,
                                      "values (codes) must all be integers.")
-            if not all([type(state) in (str,str) for state in list(ReqStates.keys())]):
+            if not all([type(state) is str for state in list(ReqStates.keys())]):
                 raise StateTypeError(ReqStates,
                                      "keys (states) must all be strings.")
             if not len(list(ReqStates.values())) == len(list(set(ReqStates.values()))):
@@ -127,7 +127,7 @@ class StateMachine(object):
         tmp.sort()
         return tmp
     def __eq__(self, other):
-        if type(other) in (str,str):
+        if type(other) is str:
             return self.current_state == other
         elif type(other) == int:
             return self.current_code == other
