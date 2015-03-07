@@ -67,7 +67,12 @@ class StateMachineTests(TestCase):
             raise Exception("Problem comparing State Machines")
             
     def test_bad_instatiations(self):
-        pass
+        
+        try:
+            StateMachine([1])
+        except StateTypeError as e:
+            if e.msg != "When required state is a list, the elements must all be strings. RequiredStates = [1]":
+                raise Exception("Problem with required states")
     #TODO
         #Examples of error cases:
     #SM = StateMachine(['A', 1])
