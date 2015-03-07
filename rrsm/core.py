@@ -45,18 +45,18 @@ class StateMachine(object):
     def __init__(self, ReqStates,InitialState=None):
         
         if type(ReqStates) is dict:
-            if not all([type(code) is int for code in ReqStates.values()]):
+            if not all([type(code) is int for code in list(ReqStates.values())]):
                 raise StateTypeError(ReqStates,
                                      "values (codes) must all be integers.")
-            if not all([type(state) in (str,unicode) for state in ReqStates.keys()]):
+            if not all([type(state) in (str,str) for state in list(ReqStates.keys())]):
                 raise StateTypeError(ReqStates,
                                      "keys (states) must all be strings.")
-            if not len(ReqStates.values()) == len(list(set(ReqStates.values()))):
+            if not len(list(ReqStates.values())) == len(list(set(ReqStates.values()))):
                 raise StateTypeError(ReqStates,
                                      "values (codes) must form a unique set.")
            
             #states are { int : str }
-            self._states = dict((code, state) for state, code in ReqStates.items())
+            self._states = dict((code, state) for state, code in list(ReqStates.items()))
             #states are { str : int }
             self._scodes = ReqStates
             
@@ -75,7 +75,7 @@ class StateMachine(object):
         else:
             self._curcode = min(self._scodes.values())
         
-        for code, state in self._states.items():
+        for code, state in list(self._states.items()):
             self.__setattr__(state, code)
     def __getitem__(self,key):
         if key in self._states:
@@ -127,7 +127,7 @@ class StateMachine(object):
         tmp.sort()
         return tmp
     def __eq__(self, other):
-        if type(other) in (str,unicode):
+        if type(other) in (str,str):
             return self.current_state == other
         elif type(other) == int:
             return self.current_code == other
@@ -142,7 +142,7 @@ class StateMachine(object):
 if __name__ == '__main__':
     SM = StateMachine(['A', 'B', 'C'])
     SM('B')
-    print SM.current_code
+    print(SM.current_code)
     if SM != 2:
         raise Exception("Problem changing state")    
     
