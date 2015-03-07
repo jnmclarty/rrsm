@@ -83,12 +83,12 @@ class StateMachine(object):
         elif key in self._scodes:
             return self._scodes[key]
         else:
-            raise KeyError("State {} does not exist".format(key))
+            raise KeyError("State {0} does not exist".format(key))
     def __repr__(self):
         keys = self.all_states
         vals = [self._scodes[k] for k in keys]
-        odict = ", ".join(["'{}' : {}".format(k,v) for k,v in zip(keys,vals)])
-        odict = "{{{}}}".format(odict)
+        odict = ", ".join(["'{0}' : {1}".format(k,v) for k,v in zip(keys,vals)])
+        odict = "{{{0}}}".format(odict)
         msg = ["StateMachine(", odict, ", InitialState=", str(self._curcode), ")"]
         return "".join(msg)
     def __call__(self, newstate):
@@ -135,7 +135,7 @@ class StateMachine(object):
             return self.current_code == other.current_code and \
                    self.current_state == other.current_state
         else:
-            raise TypeError("Cannot compare {} to StateMachine".format(type(other)))
+            raise TypeError("Cannot compare {0} to StateMachine".format(type(other)))
     def __ne__(self, other):
         return not (self == other)
             
