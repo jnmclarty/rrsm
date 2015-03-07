@@ -2,6 +2,12 @@
 Readable Runtime State Machine
 ==============================
 
+.. image:: https://travis-ci.org/jnmclarty/rrsm.svg?branch=master
+    :target: https://travis-ci.org/jnmclarty/rrsm
+    
+.. image:: https://coveralls.io/repos/jnmclarty/rrsm/badge.svg 
+    :target: https://coveralls.io/r/jnmclarty/rrsm
+
 Enables a finite state machine to be created **at run-time** *AND* leverage simple attribute syntax creating **self documenting code**.
 
 Normally these concepts are mutually exclusive, and in any finished design can hard coded.  This module is handy during prototyping.
