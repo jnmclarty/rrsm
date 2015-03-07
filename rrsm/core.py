@@ -132,7 +132,8 @@ class StateMachine(object):
         elif type(other) == int:
             return self.current_code == other
         elif isinstance(other, StateMachine):
-            return self.current_code == other.current_code
+            return self.current_code == other.current_code and \
+                   self.current_state == other.current_state
         else:
             raise TypeError("Cannot compare {} to StateMachine".format(type(other)))
     def __ne__(self, other):

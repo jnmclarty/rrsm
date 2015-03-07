@@ -14,6 +14,7 @@ class StateMachineTests(TestCase):
         
     def test_good_list(self):
         SM = StateMachine(['A','B','C'])
+        SM2 = StateMachine(['A','D','E'])
         if SM != 'A':
             raise Exception("Should have instantiated at 'A'")
         if SM != 0:
@@ -28,7 +29,6 @@ class StateMachineTests(TestCase):
         SM(2)
         if SM != 'C':
             raise Exception("Problem changing state, using code")   
-
 
     def test_good_dict(self):
         
@@ -47,7 +47,25 @@ class StateMachineTests(TestCase):
         SM(30)
         if SM != 'C':
             raise Exception("Problem changing state, using code")  
+
+    def test_all_sc(self):
+        SM = StateMachine(['A','B','C'])
+        if SM.all_states != ['A','B','C']:
+            raise Exception("Problem with states")
+        if SM.all_codes != [0,1,2]:
+            raise Exception("Problem with codes")
+    def test_repr(self):
+        SM = StateMachine(['A','B','C'])
+        if repr(SM) != "StateMachine({'A' : 0, 'B' : 1, 'C' : 2}, InitialState=0)":
+            raise Exception("Problem with repr")
     
+    def test_two_statemachines(self):
+        SM = StateMachine(['A','B','C'], InitialState=2)
+        SM2 = StateMachine(['Z','Y','C'], InitialState=2)
+
+        if SM != SM2:
+            raise Exception("Problem comparing State Machines")
+            
     def test_bad_instatiations(self):
         pass
     #TODO
