@@ -32,7 +32,7 @@ class StateMachineTests(TestCase):
 
     def test_good_dict(self):
         
-        SM = StateMachine(dict(zip(['A','B','C'],[10,20,30])))
+        SM = StateMachine(dict(list(zip(['A','B','C'],[10,20,30]))))
         if SM != 'A':
             raise Exception("Should have instantiated at 'A'")
         if SM != 10:
