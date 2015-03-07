@@ -49,4 +49,4 @@ Install
 
 The easiest way to install is::
 
-    pip install smuggle
+    pip install rrsm
