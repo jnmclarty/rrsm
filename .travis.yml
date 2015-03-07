@@ -6,6 +6,6 @@ python:
 install: pip install coveralls
 # command to run tests, e.g. python setup.py test
 script:
-  - nosetests --with-coverage --cover-package=smuggle -s
+  - nosetests --with-coverage --cover-package=rrsm -s
 after_success:
   - coveralls

@@ -1,1 +1,5 @@
 *.pyc
+.coverage
+/dist/*
+/htmlcov/*
+/rrsm.egg-info/*

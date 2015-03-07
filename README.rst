@@ -18,17 +18,27 @@ Usage
 .. code:: python
 
     >>> from rrsm import StateMachine
-    >>> SM = StateMachine(['COOL', 'OFF', 'ON', 'WARM'])
-    >>> #using strings
-    >>> SM == 'cool':
+    
+    >>> #Instantiation works with a list of the form ['state', ...] 
+    ... #or a dictionary of the form {'state' : value, ...}
+    ... SM = StateMachine(['cool', 'off', 'on', 'warm'])   
+
+    >>> #checking state works against strings or integers:
+    ... SM == 'cool'
     True
+    
     >>> #Change the state
-    >>> SM('warm')
-    >>> #using attributes
-    >>> SM == SM.cool
+    ... SM('warm')
+    
+    >>> #using attributes to check state:
+    ... SM == SM.cool
     False
     >>> SM == SM.warm
     True
+    >>> SM.current_state
+    'warm'
+    >>> SM.current_code
+    3
 
 Install
 =======
